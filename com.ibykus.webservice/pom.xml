@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ibykus</groupId>
+    <artifactId>com.ibykus.webservice</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+
+        <wildfly-jaxws-client-bom.version>15.0.1.Final</wildfly-jaxws-client-bom.version>
+        <junit.version>4.12</junit.version>
+        <assertj-core.version>3.15.0</assertj-core.version>
+
+        <cxf.version>3.2.5-jbossorg-1</cxf.version>
+        <cxf.addons.version>3.2.5</cxf.addons.version>
+        <cxf.plugin.version>3.3.0</cxf.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-jaxws-client-bom</artifactId>
+                <version>${wildfly-jaxws-client-bom.version}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-jaxws-client-bom</artifactId>
+            <type>pom</type>
+        </dependency>
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>webservice</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.plugin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.plugin.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>schnittstelle.WebserviceEndpoint</className>
+                            <outputFile>${basedir}/src/main/resources/schnittstelle.WebserviceEndpoint.wsdl</outputFile>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

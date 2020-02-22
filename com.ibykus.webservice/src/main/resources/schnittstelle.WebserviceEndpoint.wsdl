@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="WebserviceEndpointService" targetNamespace="http://schnittstelle/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schnittstelle/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://schnittstelle/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schnittstelle/" version="1.0">
+
+  <xs:element name="pojo" type="tns:pojo"/>
+
+  <xs:element name="pojos" type="tns:pojoList"/>
+
+  <xs:complexType final="extension restriction" name="pojo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pojoList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pojo" type="tns:pojo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="create">
+  </wsdl:message>
+  <wsdl:message name="createResponse">
+    <wsdl:part name="return" type="tns:pojo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="arg0" type="tns:pojo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delete">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part name="return" type="tns:pojo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readAll">
+  </wsdl:message>
+  <wsdl:message name="readResponse">
+    <wsdl:part name="return" type="tns:pojo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readAllResponse">
+    <wsdl:part name="return" type="tns:pojoList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="read">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part name="return" type="tns:pojo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WebserviceEndpoint">
+    <wsdl:operation name="create">
+      <wsdl:input name="create" message="tns:create">
+    </wsdl:input>
+      <wsdl:output name="createResponse" message="tns:createResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="update" message="tns:update">
+    </wsdl:input>
+      <wsdl:output name="updateResponse" message="tns:updateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <wsdl:input name="read" message="tns:read">
+    </wsdl:input>
+      <wsdl:output name="readResponse" message="tns:readResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input name="delete" message="tns:delete">
+    </wsdl:input>
+      <wsdl:output name="deleteResponse" message="tns:deleteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAll">
+      <wsdl:input name="readAll" message="tns:readAll">
+    </wsdl:input>
+      <wsdl:output name="readAllResponse" message="tns:readAllResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebserviceEndpointServiceSoapBinding" type="tns:WebserviceEndpoint">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="create">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="create">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:input>
+      <wsdl:output name="createResponse">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="update">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="read">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:input>
+      <wsdl:output name="readResponse">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="delete">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAll">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="readAll">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:input>
+      <wsdl:output name="readAllResponse">
+        <soap:body use="literal" namespace="http://schnittstelle/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebserviceEndpointService">
+    <wsdl:port name="WebserviceEndpointPort" binding="tns:WebserviceEndpointServiceSoapBinding">
+      <soap:address location="http://localhost:9090/WebserviceEndpointPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
