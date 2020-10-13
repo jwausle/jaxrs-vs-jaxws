@@ -15,7 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
 
         <wildfly-jaxws-client-bom.version>15.0.1.Final</wildfly-jaxws-client-bom.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj-core.version>3.15.0</assertj-core.version>
 
         <cxf.version>3.2.5-jbossorg-1</cxf.version>
