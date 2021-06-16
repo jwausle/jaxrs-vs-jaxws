@@ -16,7 +16,7 @@
 
         <wildfly-javaee8.version>15.0.1.Final</wildfly-javaee8.version>
 
-        <undertow.version>2.0.15.Final</undertow.version>
+        <undertow.version>2.0.23.Final</undertow.version>
         <resteasy.version>3.6.2.Final</resteasy.version>
         <jackson-dataformat-xml.version>2.9.5</jackson-dataformat-xml.version>
 
